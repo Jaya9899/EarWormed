@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Earwormed | Events</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <a href="index.html" class="nav-logo">earwormed</a>
+    <nav class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="event.html" class="nav-link">Events</a>
+      <a href="discover.html" class="nav-link">Discover</a>
+      <a href="vibe.html" class="nav-link">What's your Vibe?</a>
+    </nav>
+    <button class="cta-button">Get Started</button>
+  </header>
+  
+  <section class="events">
+    <br><br>
+    <br><br>
+    <br><br>
+    <br>
+    <h2 class="about-title">Upcoming <span class="highlight">CONCERTS</span></h2>
+    <div class="filters">
+      <select id="date-filter" onchange="filterEvents()">
+        <option value="all">All Dates</option>
+        <option value="march">March</option>
+        <option value="april">April</option>
+        <option value="may">May</option>
+        <option value="june">June</option>
+        <option value="july">July</option>
+      </select>
+      <select id="availability-filter" onchange="filterEvents()">
+        <option value="all">All Tickets</option>
+        <option value="available">Available</option>
+        <option value="soldout">Sold Out</option>
+      </select>
+      <select id="type-filter" onchange="filterEvents()">
+        <option value="all">All Artists</option>
+        <option value="indian">Indian</option>
+        <option value="western">Western</option>
+      </select>
+    </div>
+    <div class="events-container">
+      <div class="event-card" data-date="march" data-available="available" data-type="western">
+        <a href="https://in.bookmyshow.com/events/agam-carnatic-progressive-rock-act/ET00433006">
+          <img src="images/agam.png" alt="Agam">
+          <div class="event-info">
+            <h3 class="event-name">Agam - March 25, 2025</h3>
+          </div>
+        </a>
+      </div>
+      <div class="event-card" data-date="april" data-available="available" data-type="indian">
+        <a href="https://insider.in/microsite/arijit-singh-india-tour">
+          <img src="images/arjit.png" alt="Arjit Singh">
+          <div class="event-info">
+            <h3 class="event-name">Arijit Singh - April 10, 2025</h3>
+          </div>
+        </a>
+      </div>
+      <div class="event-card" data-date="may" data-available="soldout" data-type="western">
+        <a href="https://in.bookmyshow.com/events/bharat-chauhan-live/ET00425231">
+          <img src="images/bc.png" alt="Bharat Chauhan">
+          <div class="event-info">
+            <h3 class="event-name">Bharat Chauhan- May 5, 2025</h3>
+          </div>
+        </a>
+      </div>
+      <div class="event-card" data-date="june" data-available="available" data-type="western">
+        <a href="https://in.bookmyshow.com/events/guns-n-roses-india-2025/ET00437140">
+          <img src="images/gunsnroses.jpg" alt="Guns N Roses">
+          <div class="event-info">
+            <h3 class="event-name">Guns N Roses - June 15, 2025</h3>
+          </div>
+        </a>
+      </div>
+      <div class="event-card" data-date="july" data-available="soldout" data-type="indian">
+        <a href="https://www.district.in/shreya-ghoshal-all-hearts-tour-apr26-2025/event?af_xp=custom&deep_link_sub1=edition%3A%2F%2Fwebview%3Furl%3Dhttps%3A%2F%2Fdistrict.insider.in%2Fshreya-ghoshal-all-hearts-tour-apr26-2025%2Fevent%3Futm_source%3DClient%26utm_medium%3DArtist&source_caller=ui&pid=Partner&is_retargeting=true&af_click_lookback=7d&shortlink=ShreyaSurat2025&deep_link_value=edition%3A%2F%2Fwebview%3Furl%3Dhttps%3A%2F%2Fdistrict.insider.in%2Fshreya-ghoshal-all-hearts-tour-apr26-2025%2Fevent%3Futm_source%3DClient%26utm_medium%3DArtist&af_reengagement_window=7d&c=d-app_both_partner_d-events_others_na_na_na_na_na_na_ShreyaSuratArtist_na_na_na_na_Shreya_Artist%20_Surat_20250313">
+          <img src="images/shreya.png" alt="Shreya Ghoshal">
+          <div class="event-info">
+            <h3 class="event-name">Shreya Ghoshal - July 20, 2025</h3>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+  <script>
+    function filterEvents() {
+      let dateFilter = document.getElementById("date-filter").value;
+      let availabilityFilter = document.getElementById("availability-filter").value;
+      let typeFilter = document.getElementById("type-filter").value;
+      let events = document.querySelectorAll(".event-card");
+      
+      events.forEach(event => {
+        let date = event.getAttribute("data-date");
+        let available = event.getAttribute("data-available");
+        let type = event.getAttribute("data-type");
+        
+        if ((dateFilter === "all" || dateFilter === date) &&
+            (availabilityFilter === "all" || availabilityFilter === available) &&
+            (typeFilter === "all" || typeFilter === type)) {
+          event.style.display = "block";
+        } else {
+          event.style.display = "none";
+        }
+      });
+    }
+  </script>
+</body>
+</html>
